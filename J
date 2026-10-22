@@ -1,0 +1,81 @@
+# Nmap 7.991 scan initiated Thu Oct 22 19:36:53 2026 as: /usr/lib/nmap/nmap -sV -oJ - 10.10.0.1
+Nmap scan report for hot.spot (10.10.0.1)
+Host is up (0.0027s latency).
+Not shown: 994 closed tcp ports (reset)
+PORT     STATE SERVICE          VERSION
+22/tcp   open  ssh              MikroTik RouterOS sshd (protocol 2.0)
+53/tcp   open  domain           Mikrotik dnsd
+80/tcp   open  http
+443/tcp  open  https?
+2000/tcp open  bandwidth-test   MikroTik bandwidth-test server
+8081/tcp open  blackice-icecap?
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port80-TCP:V=7.991%I=7%D=10/22%Time=6ADA3BAF%P=x86_64-pc-linux-gnu%r(Ge
+SF:tRequest,213,"HTTP/1\.0\x20302\x20Found\r\nCache-Control:\x20no-cache\r
+SF:\nConnection:\x20close\r\nContent-Length:\x20233\r\nContent-Type:\x20te
+SF:xt/html\r\nDate:\x20Thu,\x2022\x20Oct\x202026\x2016:37:03\x20GMT\r\nExp
+SF:ires:\x20Fri,\x2022\x20Oct\x202027\x2016:37:03\x20GMT\r\nLast-Modified:
+SF:\x20Thu,\x2022\x20Oct\x202026\x2016:37:03\x20GMT\r\nLocation:\x20http:/
+SF:/hot\.spot/status\r\nX-Frame-Options:\x20sameorigin\r\n\r\n\r\n\r\n<htm
+SF:l>\r\n<head>\r\n<title>\.\.\.</title>\r\n<meta\x20http-equiv=\"refresh\
+SF:"\x20content=\"0;\x20url=http://hot\.spot/status\">\r\n<meta\x20http-eq
+SF:uiv=\"pragma\"\x20content=\"no-cache\">\r\n<meta\x20http-equiv=\"expire
+SF:s\"\x20content=\"-1\">\r\n</head>\r\n<body>\r\n</body>\r\n</html>\r\n")
+SF:%r(HTTPOptions,14B,"HTTP/1\.0\x20503\x20Service\x20Unavailable\r\nCache
+SF:-Control:\x20no-store\r\nConnection:\x20close\r\nContent-Length:\x20109
+SF:\r\nContent-Type:\x20text/html\r\nDate:\x20Thu,\x2022\x20Oct\x202026\x2
+SF:016:37:03\x20GMT\r\nExpires:\x200\r\nPragma:\x20no-cache\r\nX-Frame-Opt
+SF:ions:\x20sameorigin\r\n\r\n<!doctype\x20html>\n<html\x20lang=en>\n<titl
+SF:e>Error\x20503\x20:\x20unknown\x20method</title>\n<h1>Error\x20503\x20:
+SF:\x20unknown\x20method</h1>\n")%r(RTSPRequest,14B,"HTTP/1\.0\x20503\x20S
+SF:ervice\x20Unavailable\r\nCache-Control:\x20no-store\r\nConnection:\x20c
+SF:lose\r\nContent-Length:\x20109\r\nContent-Type:\x20text/html\r\nDate:\x
+SF:20Thu,\x2022\x20Oct\x202026\x2016:37:03\x20GMT\r\nExpires:\x200\r\nPrag
+SF:ma:\x20no-cache\r\nX-Frame-Options:\x20sameorigin\r\n\r\n<!doctype\x20h
+SF:tml>\n<html\x20lang=en>\n<title>Error\x20503\x20:\x20unknown\x20method<
+SF:/title>\n<h1>Error\x20503\x20:\x20unknown\x20method</h1>\n")%r(FourOhFo
+SF:urRequest,136,"HTTP/1\.0\x20404\x20Not\x20Found\r\nCache-Control:\x20no
+SF:-store\r\nConnection:\x20close\r\nContent-Length:\x2099\r\nContent-Type
+SF::\x20text/html\r\nDate:\x20Thu,\x2022\x20Oct\x202026\x2016:37:08\x20GMT
+SF:\r\nExpires:\x200\r\nPragma:\x20no-cache\r\nX-Frame-Options:\x20sameori
+SF:gin\r\n\r\n<!doctype\x20html>\n<html\x20lang=en>\n<title>Error\x20404\x
+SF:20:\x20Not\x20Found</title>\n<h1>Error\x20404\x20:\x20Not\x20Found</h1>
+SF:\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port8081-TCP:V=7.991%I=7%D=10/22%Time=6ADA3BAF%P=x86_64-pc-linux-gnu%r(
+SF:GetRequest,5E0,"HTTP/1\.0\x20200\x20OK\r\nCache-Control:\x20max-age=315
+SF:36000\r\nConnection:\x20close\r\nContent-Length:\x201280\r\nContent-Typ
+SF:e:\x20text/html\r\nDate:\x20Thu,\x2022\x20Oct\x202026\x2016:37:03\x20GM
+SF:T\r\nExpires:\x20Fri,\x2022\x20Oct\x202027\x2016:37:03\x20GMT\r\nX-Fram
+SF:e-Options:\x20sameorigin\r\n\r\n<!doctype\x20html>\n<html\x20lang=\"en\
+SF:">\n<meta\x20charset=\"utf-8\">\n<meta\x20name=\"viewport\"\x20content=
+SF:\"width=device-width,\x20initial-scale=1\">\n<link\x20rel=\"icon\"\x20h
+SF:ref=\"/favicon\.png\">\n<link\x20rel=\"icon\"\x20href=\"/favicon\.svg\"
+SF:>\n<title>RouterOS</title>\n<link\x20rel=\"stylesheet\"\x20href=\"/asse
+SF:ts/style-ae67df160dad\.css\">\n<script\x20src=\"/assets/script-ae01587e
+SF:2c4c\.js\"></script>\n\n<div\x20class=\"login\">\n<section>\n<div\x20cl
+SF:ass=\"brand\"><img\x20src=\"mikrotik_logo\.svg\"\x20alt=\"\"></div>\n<f
+SF:orm\x20class=\"form\"\x20id=\"login\">\n<div\x20id=\"error\"\x20class=\
+SF:"errorMessage\"></div>\n<div>\n\x20\x20<label\x20for=\"name\">Login</la
+SF:bel>\n\x20\x20<input\x20id=\"name\"\x20autocomplete=\"username\"\x20typ
+SF:e=\"text\"\x20data-defaultuser=\"admin\">\n</div>\n<div>\n\x20\x20<labe
+SF:l\x20for=\"password\">Password")%r(FourOhFourRequest,136,"HTTP/1\.0\x20
+SF:404\x20Not\x20Found\r\nCache-Control:\x20no-store\r\nConnection:\x20clo
+SF:se\r\nContent-Length:\x2099\r\nContent-Type:\x20text/html\r\nDate:\x20T
+SF:hu,\x2022\x20Oct\x202026\x2016:37:03\x20GMT\r\nExpires:\x200\r\nPragma:
+SF:\x20no-cache\r\nX-Frame-Options:\x20sameorigin\r\n\r\n<!doctype\x20html
+SF:>\n<html\x20lang=en>\n<title>Error\x20404\x20:\x20Not\x20Found</title>\
+SF:n<h1>Error\x20404\x20:\x20Not\x20Found</h1>\n")%r(SIPOptions,14B,"HTTP/
+SF:1\.0\x20503\x20Service\x20Unavailable\r\nCache-Control:\x20no-store\r\n
+SF:Connection:\x20close\r\nContent-Length:\x20109\r\nContent-Type:\x20text
+SF:/html\r\nDate:\x20Thu,\x2022\x20Oct\x202026\x2016:37:03\x20GMT\r\nExpir
+SF:es:\x200\r\nPragma:\x20no-cache\r\nX-Frame-Options:\x20sameorigin\r\n\r
+SF:\n<!doctype\x20html>\n<html\x20lang=en>\n<title>Error\x20503\x20:\x20un
+SF:known\x20method</title>\n<h1>Error\x20503\x20:\x20unknown\x20method</h1
+SF:>\n");
+MAC Address: F4:1E:57:75:4F:AF (Routerboard.com)
+Service Info: OS: Linux; Device: router; CPE: cpe:/o:mikrotik:routeros
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Oct 22 19:38:33 2026 -- 1 IP address (1 host up) scanned in 100.37 seconds
