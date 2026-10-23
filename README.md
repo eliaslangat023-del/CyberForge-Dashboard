@@ -1,117 +1,37 @@
-# ⚡ CyberForge Dashboard
+# CyberForge Dashboard
 
-// Welcome, traveler. You’ve stumbled into CyberForge — a stitched‑together hacker cockpit built with React + FastAPI.
-// It’s not a corporate dashboard. It’s a Frankenstein mash‑up of Nmap, Bettercap, and BeEF, duct‑taped into one GUI.
-// ⚠️ Lab use only. Unauthorized use = bad karma + orange jumpsuit.
+A local React + FastAPI dashboard for authorized security labs, integrating Nmap and optional Bettercap/BeEF tooling.
 
----
+## Use responsibly
+Run scans and security tools only against systems you own or have explicit permission to test. Keep this dashboard bound to localhost during development. Do not expose privileged tooling endpoints directly to the public internet.
 
-## 🕹️ Features
-// What this beast can actually do (besides look cool):
+## Requirements
+- Python 3.10+
+- Node.js and npm
+- Nmap
+- Backend packages from `backend/requirements.txt`
+- Frontend packages from `frontend/package.json`
+- Bettercap/BeEF only if you intentionally configure those integrations
 
-- Nmap panel — JSON scans without squinting at raw terminal output.
-- Bettercap integration — MITM monitoring and injection workflows.
-- BeEF hook monitor — track browsers that wander into your trap.
-- React frontend — modular panels, nerd‑approved.
-- FastAPI backend — proxies secrets, keeps your repo clean.
+## Start the backend
+From the repository root, create and activate a virtual environment, install backend dependencies, then run the app using the import path that matches your folder layout. For a root-level `backend/` package:
 
----
-
-## 🛠️ Requirements
-// Stuff you need installed before pressing shiny buttons:
-
-- Python ≥3.10
-- Node.js + npm
-- FastAPI + Uvicorn
-- Nmap ≥7.93 (JSON output support)
-- Bettercap ≥2.41
-- BeEF (`apt install beef-xss` on Kali)
-- Ruby gems if running BeEF manually (`msgpack`, `thin`, `em-websocket`, `rack`)
-
----
-
-## 🚀 Setup
-// How to summon the dashboard without sacrificing goats:
-
-### Backend
 ```bash
-cd backend
-pip install -r requirements.txt
+python -m venv .venv
+source .venv/bin/activate
+pip install -r backend/requirements.txt
+uvicorn backend.main:app --host 127.0.0.1 --port 8000
+```
 
-Start BeEF:
-bash
+If running from inside `backend/`, use `uvicorn main:app --host 127.0.0.1 --port 8000` instead. Review the frontend's configured API URL before launching it.
 
-sudo beef-xss-start
+## Security checklist
+- Add authentication and per-action authorization before using beyond a single-user local lab.
+- Validate and allowlist target hosts, ports, and command arguments server-side; never pass unsanitized user input to shell commands.
+- Keep CORS limited to the exact local frontend origin.
+- Store API tokens in environment variables; never put live tokens in source control or README examples.
+- Run subprocesses with least privilege, timeouts, and bounded output; do not run the web server as root.
+- Do not commit scan output, target inventories, credentials, or session data.
 
-Grab the API token (BeEF prints it at startup or via /api/admin/login). Then export it:
-bash
-
-export BEEF_API_TOKEN=<your_token_here>
-sudo uvicorn backend.main:app --reload
-
-Frontend
-bash
-
-cd frontend
-npm install
-npm start
-
-Dashboard runs at:
-Code
-
-http://localhost:3000
-
-🧪 BeEF Integration (Browser BBQ)
-
-// This is where browsers get skewered. Only in your lab. Don’t be “that guy.”
-Getting the Token
-
-BeEF is moody — it generates a new API token every time it wakes up. Options:
-
-    Run sudo ./beef in /usr/share/beef-xss if you’ve appeased the Ruby gem gods.
-
-    Or set admin creds in config.yaml, log in at http://127.0.0.1:3000/ui/panel, then curl /api/admin/login to fetch the token.
-
-Using the Token
-
-Export it before running FastAPI:
-bash
-
-export BEEF_API_TOKEN=deadbeefcafebabe1234567890abcdef
-
-Now your dashboard’s BeEF button will actually show hooked clients instead of shrugging with a 200 OK.
-📦 requirements.txt (backend)
-
-// Python dependencies, because pip loves lists:
-Code
-
-fastapi
-uvicorn
-requests
-python-dotenv
-
-🖼️ Workflow Diagram (ASCII edition)
-
-// Because ASCII art is still cooler than PowerPoint:
-Code
-
-[ React Dashboard ] ---> [ FastAPI Proxy ] ---> [ BeEF / Nmap / Bettercap ]
-        |                        |                        |
-        |                        |                        |
-        +-----> User clicks ---->+-----> Injects token --->+-----> Tools respond
-
-🧑‍💻 Contributing
-
-// Rules of engagement:
-
-    Fork it, hack it, break it, fix it.
-
-    PRs welcome — especially if you tame BeEF’s gem tantrums.
-
-    Keep commits clean: one feature per commit, no “final_final_fix_really_this_time.js”.
-
-⚠️ Disclaimer
-
-// Legal voodoo: read this or risk the jumpsuit.
-
-This project is for educational and research purposes only. Do not use against unauthorized systems. You are responsible for your own actions. Unauthorized use = bad karma + orange jumpsuit.
+## Development
+Run linting/tests where configured and verify the complete diff before merging. This repository is a learning project; integrations may require local setup and have not been represented as production-ready.
